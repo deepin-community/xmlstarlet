@@ -1,0 +1,7 @@
+40-use-debian-docbook-xsl.patch
+50-fix-format-security.patch
+60-avoid-silent-rules.patch
+70-remove-link-usr-lib.patch
+80-fix-unesc-dquot.patch
+90-fix-upstream-version.patch
+pkg-config.patch

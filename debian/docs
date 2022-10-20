@@ -1,0 +1,8 @@
+NEWS
+README
+TODO
+doc/*.html
+doc/*.css
+doc/*.xml
+doc/*.ps
+doc/*.txt

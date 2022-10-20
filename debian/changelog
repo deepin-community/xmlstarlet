@@ -1,0 +1,309 @@
+xmlstarlet (1.6.1-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Use pkg-config to find the libxml2, libxslt and libexslt libraries
+    (Closes: #948791, #949513).
+  * debian/changelog: Remove trailing whitespace.
+  * debian/control:
+    - Sort Build-Depends list.
+    - Drop build-dependencies on autotools-dev and dh-autoreconf.
+      The autoreconf sequence is enabled by default in debhelper >= 10.
+    - Build-Depend on pkg-config.
+    - Use debhelper-compat v13 instead of legacy debian/compat.
+    - Raise Standards-Version to 4.5.0 from 3.9.8 (no changes needed).
+    - Add Rules-Requires-Root: no.
+  * debian/copyright: Use secure HTTP protocol in the Format field.
+  * debian/rules:
+    - Drop '--with autoreconf' with change to debhelper >= 10.
+    - Set 0644 permissions on xmlstarlet-pad.xml and xmlstarlet-xsa.xml.
+    - Do not install upstream ChangeLog. The file is empty.
+
+ -- Hugh McMaster <hugh.mcmaster@outlook.com>  Sat, 30 May 2020 23:34:58 +1000
+
+xmlstarlet (1.6.1-2) unstable; urgency=medium
+
+  * Bump to Standards-Version 3.9.8. No changes required.
+  * Set canonical and secure URIs to Vcs-Git and Vcs-Browser.
+  * 70-remove-link-usr-lib.patch: remove -L/usr/lib from the
+    build system. (Closes: #722870)
+  * 80-fix-unesc-dquot.patch: make unesc handle &quot; and &apos;.
+    (Closes: #837122)
+  * 90-fix-upstream-version.patch: Do not get upstream version from git
+    repository, get it from Debian environment variable. (Closes: #850842)
+
+ -- Mònica Ramírez Arceda <monica@debian.org>  Tue, 24 Jan 2017 13:14:14 +0100
+
+xmlstarlet (1.6.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh debian/patches/40-use-debian-docbook-xsl.patch.
+  * Update debian/patches/50-fix-format-security.patch to fix more format
+    string literals.
+  * Bump to Standards-Version 3.9.5. No changes required.
+
+ -- Mònica Ramírez Arceda <monica@debian.org>  Sun, 14 Sep 2014 15:10:13 +0200
+
+xmlstarlet (1.5.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Remove debian/patches/30-fix-stray-in-program.patch: fix usage2c.awk for
+    mawk in upstream.
+  * Remove debian/patches/50-fix-ftbfs-tests.patch: it is applied upstream.
+  * Add debian/patches/50-fix-format-security.patch: fix format string literals.
+  * Add debian/patches/60-avoid-silent-rules.patch: don't hide the real compiler
+    flags to allow automatic checks for missing (hardening) flags via blhc.
+
+ -- Mònica Ramírez Arceda <monica@debian.org>  Sun, 14 Jul 2013 20:10:29 +0200
+
+xmlstarlet (1.4.2-3) unstable; urgency=low
+
+  * debian/patches/50-fix-ftbfs-tests.patch: move tests environment variables
+    to AM_TESTS_ENVIRONMENT to avoid FTBFS. (Closes: #713385)
+  * debian/control: use the canonical URI in VCS-* fields.
+  * debian/rules: do not install .trs files.
+
+ -- Mònica Ramírez Arceda <monica@debian.org>  Tue, 25 Jun 2013 21:10:32 +0200
+
+xmlstarlet (1.4.2-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Mònica Ramírez Arceda <monica@debian.org>  Tue, 14 May 2013 14:26:40 +0200
+
+xmlstarlet (1.4.2-1) experimental; urgency=low
+
+  * New upstream release.
+  * Remove patch 10-add-xmlstar-fodoc-style.xsl.patch: it is not needed any
+    more, xmlstar-fodoc-style.xsl is now included in upstream tarball.
+  * Remove patch 20-automake-needs-pkg-tarname.patch: fixed in new release.
+  * debian/rules: exclude test log files generated during build time from
+    examples directory.
+
+ -- Mònica Ramírez Arceda <monica@debian.org>  Mon, 11 Feb 2013 17:08:46 +0100
+
+xmlstarlet (1.4.0-1) experimental; urgency=low
+
+  * New upstream release.
+  * Remove patch fix_inconsistency_man_page.patch: it's not needed anymore.
+  * debian/docs: remove doc/callouts. This dir doesn't exist anymore.
+  * Generate documentation. (Closes: #621755)
+    - debian/rules: add --enable-build-docs option to configure to generate
+      documentation.
+    - debian/clean: remove upstream documentation to generate documentation
+      again.
+    - debian/patches/10-add-xmlstar-fodoc-style.xsl.patch: add
+      xmlstar-fodoc-style.xsl to be able to generate documentation.
+  * debian/patches/20-automake-needs-pkg-tarname.patch: Install
+    documentation in /usr/share/doc/xmlstarlet, instead of /usr/share/doc/.
+  * Update debian/xmlstarlet.doc-base.
+  * Add xsltproc, gawk, docbook-xsl-ns, fop and ghostscript as build
+    dependencies.
+  * debian/patches/30-fix-stray-in-program.patch: Force usage2c.awk to use
+    gawk.
+  * debian/patches/40-use-debian-docbook-xsl.patch: use docbook stylesheets
+    from docbook-xsl-ns package.
+  * Bump to Standards-Version 3.9.4. No changes required.
+
+ -- Mònica Ramírez Arceda <monica@debian.org>  Thu, 25 Oct 2012 11:23:36 +0200
+
+xmlstarlet (1.3.1-3) unstable; urgency=low
+
+  * Remove debian/menu file: xmlstarlet does not do anything useful if invoked
+    without arguments. (Closes: #673716)
+
+ -- Mònica Ramírez Arceda <monica@debian.org>  Sat, 23 Jun 2012 17:58:15 +0200
+
+xmlstarlet (1.3.1-2) unstable; urgency=low
+
+  * Update Maintainer field with Debian email.
+  * Update compatibility level to 9.
+  * debian/rules: Enable security hardening build flags.
+  * debian/copyright: update format field and manitainer's email.
+  * Bump to Standards-Version 3.9.3. No changes required.
+
+ -- Mònica Ramírez Arceda <monica@debian.org>  Sun, 01 Apr 2012 16:33:04 +0200
+
+xmlstarlet (1.3.1-1) unstable; urgency=low
+
+  * New upstream release.
+    - Substitute external entities. (Closes: #653666)
+
+ -- Mònica Ramírez Arceda <monica@probeta.net>  Sat, 21 Jan 2012 19:02:58 +0100
+
+xmlstarlet (1.3.0-1) unstable; urgency=low
+
+  * New upstream release.
+    - Work around libxml bug that passes bogus data
+      to error handler (Closes: #642523)
+
+ -- Mònica Ramírez Arceda <monica@probeta.net>  Thu, 06 Oct 2011 11:22:27 +0200
+
+xmlstarlet (1.2.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Fix a comment in debian/rules: static libs are disabled by default.
+
+ -- Mònica Ramírez Arceda <monica@probeta.net>  Sat, 09 Jul 2011 11:34:55 +0200
+
+xmlstarlet (1.2.0-1) unstable; urgency=low
+
+  * New upstream release.
+    - Restore input context (lost in version 1.0.3) to error messages.
+      (Closes: #627158)
+  * Bump to Standards-Version 3.9.2. No changes required.
+  * fix_inconsistency_man_page.patch: update patch header to fix minor spelling.
+
+ -- Mònica Ramírez Arceda <monica@probeta.net>  Sun, 05 Jun 2011 20:22:47 +0200
+
+xmlstarlet (1.1.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Remove add.shellscript.mark.patch: fixed in upstream.
+  * Remove --disable-static-libs configure option in debian/rules:
+    static libs are disabled in upstream by default.
+  * Change the way of renaming xml to xmlstarlet in debian/rules.
+    Thanks to Vincent Lefevre. (See bug #621755).
+  * Fix inconsistency of names (rename xml to xmlstarlet) in man page
+    (fix_inconsistency_man_page.patch). (See bug #621755).
+  * Update debian/control: add automake version dependency to avoid build errors
+    with older versions.
+    See: https://buildd.debian.org/status/fetch.php?pkg=xmlstarlet&arch=hurd-i386&ver=1.0.6-1&stamp=1300571888
+  * Update debian/copyright to DEP-5.
+
+ -- Mònica Ramírez Arceda <monica@probeta.net>  Sun, 10 Apr 2011 11:32:53 +0200
+
+xmlstarlet (1.0.6-1) unstable; urgency=low
+
+  * New upstream release.
+  * Update add.shellscript.mark.patch to add examples/c14n-newlines.
+  * debian/rules: Remove override_dh_auto_build.
+    After applying clean target, version.h is regenerated.
+
+ -- Mònica Ramírez Arceda <monica@probeta.net>  Thu, 17 Mar 2011 12:38:02 +0100
+
+xmlstarlet (1.0.5-1) unstable; urgency=low
+
+  * New upstream release.
+    - Use XSLT_PARSE_OPTIONS, else CDATA nodes can cause corruption.
+      (Closes: #583113)
+  * Remove upstream.version.without.git.patch: new release realizes if
+    we are using a git repository or not.
+  * Remove fix.spelling.errors.patch: spelling error solved in new
+    upstream release.
+  * Remove fix.wrong.documentation.patch: in new upstream release
+    usage strings use argv[0] as program name.
+  * debian/rules: Make sure version.h exists. After applying clean target,
+    version.h is removed and the next builds fail.
+  * Add Vcs-Git, Vcs-Browser fields in debian/control.
+
+ -- Mònica Ramírez Arceda <monica@probeta.net>  Thu, 17 Feb 2011 11:44:34 +0100
+
+xmlstarlet (1.0.4-1) unstable; urgency=low
+
+  * New upstream release.
+    - Fix some bugs (Closes: #311505, #539573, #609783, #444215)
+  * Update upstream.version.without.git.patch to upgrade to version 1.0.4.
+  * Update add.shellscript.mark.patch to add new examples.
+  * Delete disable.static.libs.patch. Solved in upstream.
+
+ -- Mònica Ramírez Arceda <monica@probeta.net>  Wed, 19 Jan 2011 10:05:09 +0100
+
+xmlstarlet (1.0.3-1) unstable; urgency=low
+
+  * Adopt the package. (Closes: #571643)
+  * New upstream release.
+  * Update debhelper compatibility level to 8. No changes required further
+    changing version in debian/compat and debian/control files.
+  * Change debian/rules to use dh command.
+  * Bump to Standards-Version 3.9.1. No changes required.
+  * Add Debian menu entry.
+  * Update watch file to version 3.
+  * Patch configure.ac to build the package with shared libixml2 and libxslt.
+    This patch is based in an upstream commit.
+    See commit number 7e46365a274e1c0e5276423391a46e65b76336e9
+    in upstream repository: http://xmlstar.git.sourceforge.net/
+    Hopefully, it will be included in next version.
+  * Patch configure.ac version to avoid getting version from git repository.
+  * configure.in file disappeared and therefore the Debian patch applied to it.
+  * Delete pkg-config dependency:
+    pkg-config was used in the patch of old configure.in.
+  * Fix wrong documentation in --help options. Patch fix.wrong.documentation.
+    (Closes: #373167)
+  * Add #!/bin/sh line to examples. Patch add.shellscript.mark.patch.
+  * Fix spelling error: diplay -> display in src/xml_trans.c. Patch
+    fix.spelling.errors.patch.
+  * Update information about where was the source downloaded from in
+    debian/copyright and removed duplicated information.
+
+ -- Mònica Ramírez Arceda <monica@probeta.net>  Sun, 02 Jan 2011 20:49:38 +0100
+
+xmlstarlet (1.0.2-1) unstable; urgency=low
+
+  * QA upload.
+  * New upstream release. Includes prevention of -N
+    options getting dropped for command-line
+    (Closes: #540842) (LP: #209982)
+  * Migrate to 3.0 (quilt) for upstream changes.
+  * Build-depend on autotools-dev and dh-autoreconf to update the
+    autotools information. Replaces outdated config.{sub,guess}
+    (Closes: #535723)
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 20 Jun 2010 20:48:59 +0100
+
+xmlstarlet (1.0.1-2) unstable; urgency=low
+
+  * Add missing build-depends created by one of the applied patches.  D'oh!
+    (closes: #369704, #369722)
+
+ -- Alex Mauer <hawke@hawkesnest.net>  Wed, 31 May 2006 19:14:16 -0500
+
+xmlstarlet (1.0.1-1) unstable; urgency=low
+
+  * New upstream release (closes: #367855)
+  * Added examples (closes: #312307) and graphics for the documentation
+    (closes: #312308)
+  * Binary name is now xmlstarlet on all arches, not just i386 (closes:
+    #312932)
+
+ -- Alex Mauer <hawke@hawkesnest.net>  Thu, 18 May 2006 11:56:07 -0500
+
+xmlstarlet (1.0.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Alex Mauer <hawke@hawkesnest.net>  Tue,  8 Feb 2005 10:22:07 -0600
+
+xmlstarlet (0.9.3-5) unstable; urgency=low
+
+  * Added graphics for the html docs to the doc/callouts directory
+
+ -- Alex Mauer <hawke@hawkesnest.net>  Sun,  2 Jan 2005 20:56:17 -0600
+
+xmlstarlet (0.9.3-4) unstable; urgency=low
+
+  * applied patch for hppa systems (closes: #283039)
+
+ -- Alex Mauer <hawke@hawkesnest.net>  Mon, 27 Dec 2004 11:55:45 -0600
+
+xmlstarlet (0.9.3-3) unstable; urgency=low
+
+  * Fixed the description so it's formatted better (closes: #281132)
+  * Actually moved docs into doc subdir, so that it installs even if doc-base
+    is installed. (closes: #281137)
+  * Dynamically linked so that it takes up 69K instead of ~1.3M (Closes:
+    #281684)
+
+ -- Alex Mauer <hawke@hawkesnest.net>  Wed, 17 Nov 2004 14:10:23 -0600
+
+xmlstarlet (0.9.3-2) unstable; urgency=low
+
+  * Fixed debian/watch so uscan can find new versions of xmlstarlet
+
+ -- Alex Mauer <hawke@hawkesnest.net>  Tue, 12 Oct 2004 15:40:14 -0500
+
+xmlstarlet (0.9.3-1) unstable; urgency=low
+
+  * Initial Release.
+  * First package for me!
+
+ -- Alex Mauer <hawke@hawkesnest.net>  Tue, 28 Sep 2004 17:10:28 -0500

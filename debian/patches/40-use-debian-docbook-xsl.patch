@@ -1,0 +1,24 @@
+Description: Use stylesheets from docbook-xsl-ns package.
+Author: Mònica Ramírez Arceda <monica@debian.org>
+Last-Update: 2012-10-28
+
+--- a/doc/doc.mk
++++ b/doc/doc.mk
+@@ -31,7 +31,7 @@
+ .xml.html:
+ 	$(V_DOCBOOK)$(EDIT_XML) $< | $(XSLTPROC) $(DOCBOOK_PARAMS) \
+   --stringparam html.stylesheet html.css \
+-  http://docbook.sourceforge.net/release/xsl-ns/current/html/docbook.xsl \
++  /usr/share/xml/docbook/stylesheet/docbook-xsl-ns/html/docbook.xsl \
+   - > $@
+ 
+ .xml.fo:
+@@ -50,7 +50,7 @@
+ 
+ $(manpage): $(manpage_src)
+ 	 $(V_DOCBOOK)$(EDIT_XML) $< | $(XSLTPROC) -o $@ \
+-	  http://docbook.sourceforge.net/release/xsl-ns/current/manpages/docbook.xsl \
++	  /usr/share/xml/docbook/stylesheet/docbook-xsl-ns/manpages/docbook.xsl \
+ 	  -
+ 
+ $(txtguide): $(txtguide_src) $(usage_texts)
